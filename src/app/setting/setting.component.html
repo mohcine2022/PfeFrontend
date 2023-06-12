@@ -1,0 +1,41 @@
+<div>
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab>
+      <ng-template matTabLabel>
+        <mat-icon>groups</mat-icon> &nbsp;Enseignants
+      </ng-template>
+      <app-enseignant></app-enseignant>
+    </mat-tab>
+    <mat-tab>
+      <ng-template matTabLabel>
+        <mat-icon>manage_accounts</mat-icon> &nbsp;Responsables
+      </ng-template>
+      <app-responsable></app-responsable>
+    </mat-tab>
+    <mat-tab>
+      <ng-template matTabLabel>
+        <mat-icon>lists</mat-icon> &nbsp;Cours
+      </ng-template>
+      <app-cours></app-cours>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template matTabLabel>
+        <mat-icon>meeting_room</mat-icon> &nbsp;Salles
+      </ng-template>
+      <app-salle></app-salle>
+    </mat-tab>
+    <mat-tab>
+      <ng-template matTabLabel>
+        <mat-icon>person</mat-icon> &nbsp;Utilisateurs
+      </ng-template>
+      <app-utilisateur></app-utilisateur>
+    </mat-tab>
+    <mat-tab>
+      <ng-template matTabLabel>
+        <mat-icon>shield_lock</mat-icon> &nbsp;Profils
+      </ng-template>
+      <app-profil></app-profil>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -1,0 +1,77 @@
+<mat-drawer-container [hasBackdrop]="false" fxFill>
+  <mat-drawer style="min-width: 260px" [mode]="'side'" opened="true">
+
+    <div fxLayout="column" fxFlex fxLayoutAlign="space-between center" style="overflow:hidden;">
+      <div class="logo">Centre de Formation</div>
+
+
+      <mat-nav-list>
+        <mat-list-item routerLink="/dashboard" routerLinkActive="active">
+          <mat-icon matListItemIcon>dashboard</mat-icon>
+          <span matListItemTitle>Tableau de bord</span>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/planning" routerLinkActive="active">
+          <mat-icon matListItemIcon>calendar_view_week</mat-icon>
+          <span matListItemTitle>Emplois du temps</span>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/inscription" routerLinkActive="active">
+          <mat-icon matListItemIcon>format_list_bulleted_add</mat-icon>
+          <span matListItemTitle>Inscriptions</span>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/etudiant" routerLinkActive="active">
+          <mat-icon matListItemIcon>group_add</mat-icon>
+          <span matListItemTitle>Etudiants</span>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/notes" routerLinkActive="active">
+          <mat-icon matListItemIcon>format_list_numbered_rtl</mat-icon>
+          <span matListItemTitle>Notes</span>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/emargement" routerLinkActive="active">
+          <mat-icon matListItemIcon>playlist_add_check</mat-icon>
+          <span matListItemTitle>Emargements</span>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/conge" routerLinkActive="active">
+          <mat-icon matListItemIcon>event_busy</mat-icon>
+          <span matListItemTitle>Congés</span>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/formation" routerLinkActive="active">
+          <mat-icon matListItemIcon>playlist_add_check_circle</mat-icon>
+          <span matListItemTitle>Formations</span>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/cahier-de-text" routerLinkActive="active">
+          <mat-icon matListItemIcon>menu_book</mat-icon>
+          <span matListItemTitle>Cahiers de text</span>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/settings" routerLinkActive="active">
+          <mat-icon matListItemIcon>settings</mat-icon>
+          <span matListItemTitle>Paramétrage</span>
+        </mat-list-item>
+
+      </mat-nav-list>
+
+      <span fxFlex></span>
+
+      <button mat-button (click)="logout()">
+        <mat-icon style="color: red">logout</mat-icon>
+        Se déconnecter
+      </button>
+    </div>
+
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-card>
+      <router-outlet></router-outlet>
+    </mat-card>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+

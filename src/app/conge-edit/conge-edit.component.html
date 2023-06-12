@@ -1,0 +1,54 @@
+<div matDialogTitle>
+  Conge
+</div>
+<div matDialogContent [formGroup]="congeForm">
+
+
+  <div fxLayout="column" fxLayoutGap="6px">
+
+    <div fxLayoutAlign="space-between center" fxLayout="row" fxLayoutGap="4px">
+
+      <mat-form-field>
+        <mat-label>Date Début</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="dateDebut">
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Date Fin</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="dateFin">
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+
+    <mat-form-field formGroupName="enseignant">
+      <mat-label>Enseignant</mat-label>
+      <mat-select placeholder="Enseignant" formControlName="id">
+        <mat-option *ngFor="let enseignant of enseignants" [value]="enseignant.id">
+          {{enseignant.nom}} {{enseignant.prenom}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field formGroupName="responsableDeFormation">
+      <mat-label>Responsable</mat-label>
+      <mat-select placeholder="Responsable" formControlName="id">
+        <mat-option *ngFor="let responsable of responsables" [value]="responsable.id">
+          {{responsable.nom}} {{responsable.prenom}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+
+</div>
+<div matDialogActions align="end">
+  <button mat-button color="accent" matDialogClose>Fermer</button>
+  <button mat-raised-button color="primary" [disabled]="congeForm.invalid" (click)="enregistrer(congeForm.value)">Enregister</button>
+</div>
+

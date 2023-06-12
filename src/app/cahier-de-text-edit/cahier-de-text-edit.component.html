@@ -1,0 +1,28 @@
+<div>
+  <h1>Nouveau texte</h1>
+</div>
+<div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="8px" [formGroup]="cdtForm">
+
+  <mat-button-toggle-group formControlName="typeDeTexte">
+    <mat-button-toggle value="ANNONCE">Annonce</mat-button-toggle>
+    <mat-button-toggle value="NOTE_DE_COURS">Note de cours</mat-button-toggle>
+    <mat-button-toggle value="RAPPEL_DE_DEVOIR">Rappel de devoir</mat-button-toggle>
+    <mat-button-toggle value="DATE_EVALUATION">Date d'évaluation</mat-button-toggle>
+  </mat-button-toggle-group>
+
+
+  <mat-form-field fxFlexFill required>
+    <mat-label>Titre</mat-label>
+    <input type="text" matInput placeholder="Titre" formControlName="titre">
+  </mat-form-field>
+
+  <mat-form-field fxFlexFill required>
+    <mat-label>Description</mat-label>
+    <input type="text" matInput placeholder="Description" formControlName="description">
+  </mat-form-field>
+
+</div>
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+  <button mat-button color="accent" tabindex="-1" (click)="close()">Fermer</button>
+  <button mat-raised-button color="primary" [disabled]="cdtForm.invalid" (click)="save(cdtForm.value)">Enregistrer</button>
+</div>

@@ -1,0 +1,25 @@
+<div matDialogTitle>
+  Salle
+</div>
+<div matDialogContent [formGroup]="salleForm">
+
+
+  <div fxLayout="column" fxLayoutGap="6px">
+    <mat-form-field required>
+      <mat-label>Numéro de Salle</mat-label>
+      <input matInput placeholder="Numéro de salle" formControlName="numeroDeSalle">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Capacité</mat-label>
+      <input matInput placeholder="Capacité" formControlName="capacite" type="number">
+    </mat-form-field>
+  </div>
+
+
+
+</div>
+<div matDialogActions align="end">
+  <button mat-button color="accent" matDialogClose>Fermer</button>
+  <button mat-raised-button color="primary" [disabled]="salleForm.invalid" (click)="enregistrer(salleForm.value)">Enregister</button>
+</div>

@@ -1,0 +1,52 @@
+<mat-toolbar style="height: 50px !important;" color="primary" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="8px">
+  <mat-icon>event_busy</mat-icon>
+  Liste des Congés
+  <span fxFlex></span>
+
+  <button mat-button (click)="modifierConge()">
+    <mat-icon>add</mat-icon>
+    Ajouter congé
+  </button>
+</mat-toolbar>
+<div fxLayout="column" fxLayoutAlign="start" style="padding: 8px">
+
+
+  <mat-form-field fxFlexFill>
+    <mat-icon matIconPrefix>search</mat-icon>
+    <input matInput placeholder="Rechercher congé" [formControl]="filter">
+  </mat-form-field>
+
+
+  <mat-table [dataSource]="congeDatasource"
+             style="height: calc(100vh - 210px) !important;" matSort matSortActive="nom"
+             matSortDirection="asc">
+
+    <!--Table-->
+    <ng-container *ngFor="let col of availableColumns" cdkColumnDef="{{col.label}}">
+      <mat-header-cell *cdkHeaderCellDef mat-sort-header> {{col.label}}</mat-header-cell>
+      <mat-cell *cdkCellDef="let row"> {{row[col.value]}}</mat-cell>
+    </ng-container>
+
+    <!--actions-->
+    <ng-container cdkColumnDef="action">
+      <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+      <mat-cell *cdkCellDef="let row">
+        <button mat-icon-button [matTooltip]="'Modifier'"
+                (click)="$event.stopPropagation(); modifierConge(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="$event.stopPropagation(); supprimerConge(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <!--header-->
+    <mat-header-row *cdkHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+    <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [length]="congeDatasource.data.length" [pageIndex]="0" [pageSize]="25"
+                 [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+  </mat-paginator>
+</div>

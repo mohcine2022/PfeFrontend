@@ -1,0 +1,14 @@
+:host {
+  .formations {
+    padding: 8px;
+  }
+
+  .grid-formations {
+    margin-top: 32px;
+    padding-inline: 16px;
+    mat-card {
+      min-width: 200px;
+      min-height: 220px;
+    }
+  }
+}

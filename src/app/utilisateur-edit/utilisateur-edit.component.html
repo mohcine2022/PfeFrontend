@@ -1,0 +1,40 @@
+<div matDialogTitle>
+  Utilisateur
+</div>
+<div matDialogContent [formGroup]="utilisateurForm">
+
+
+  <div fxLayout="column" fxLayoutGap="6px">
+    <mat-form-field required>
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field required>
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Password" formControlName="password" type="password">
+    </mat-form-field>
+
+    <mat-form-field formGroupName="profil">
+      <mat-label>Profil</mat-label>
+      <mat-select formControlName="id" required>
+        <mat-option *ngFor="let profil of profils" [value]="profil.id">{{profil.titre}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field formGroupName="personne">
+      <mat-label>Personne</mat-label>
+      <mat-select formControlName="id">
+        <mat-option *ngFor="let personne of personnes" [value]="personne.id">{{personne.nom}} {{personne.prenom}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+
+
+</div>
+<div matDialogActions align="end">
+  <button mat-button color="accent" matDialogClose>Fermer</button>
+  <button mat-raised-button color="primary" [disabled]="utilisateurForm.invalid" (click)="enregistrer(utilisateurForm.value)">Enregister</button>
+</div>
+

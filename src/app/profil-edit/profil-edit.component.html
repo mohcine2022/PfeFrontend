@@ -1,0 +1,42 @@
+<div matDialogTitle>
+  Profil
+</div>
+<div matDialogContent [formGroup]="profilForm">
+
+
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="6px">
+    <mat-form-field>
+      <mat-label>Titre</mat-label>
+      <input matInput placeholder="Titre" formControlName="titre">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput placeholder="Description" formControlName="description">
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="8px">
+
+    <mat-slide-toggle formControlName="suiviIntervenant">Suivi Intervenant</mat-slide-toggle>
+
+    <mat-slide-toggle formControlName="voirCahierDeTexteInteractif">Voir cahiers de text</mat-slide-toggle>
+
+    <mat-slide-toggle formControlName="voirConge">Voir Congés</mat-slide-toggle>
+
+    <mat-slide-toggle formControlName="voirCours">Voir cours</mat-slide-toggle>
+
+    <mat-slide-toggle formControlName="voirEmargement">Voir emargements</mat-slide-toggle>
+
+    <mat-slide-toggle formControlName="voirEmploiDuTemps">Voir emlpoi du temps</mat-slide-toggle>
+
+    <mat-slide-toggle formControlName="voirNotes">Voir notes</mat-slide-toggle>
+
+  </div>
+
+
+</div>
+<div matDialogActions align="end">
+  <button mat-button color="accent" matDialogClose>Fermer</button>
+  <button mat-raised-button color="primary" (click)="enregistrer(profilForm.value)">Enregister</button>
+</div>

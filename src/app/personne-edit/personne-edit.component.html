@@ -1,0 +1,61 @@
+<div matDialogTitle>
+  {{personneType}}
+</div>
+<div matDialogContent [formGroup]="personneForm">
+
+
+  <div fxLayout="column" fxLayoutGap="6px">
+
+    <div fxLayout="row nowrap" fxLayoutAlign="space-between center" fxLayoutGap="4px">
+      <mat-form-field required>
+        <mat-label>Nom</mat-label>
+        <input matInput placeholder="Nom" formControlName="nom">
+      </mat-form-field>
+      <mat-form-field required>
+        <mat-label>Prénom</mat-label>
+        <input matInput placeholder="Prénom" formControlName="prenom">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutAlign="space-between center" fxLayoutGap="4px">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Tél</mat-label>
+        <input matInput placeholder="Tél" formControlName="numeroDeTelephone">
+      </mat-form-field>
+    </div>
+
+    <ng-container [ngSwitch]="personneType">
+      <ng-container *ngSwitchCase="'Enseignant'">
+        <mat-form-field>
+          <mat-label>Diplome</mat-label>
+          <input matInput placeholder="Diplome" formControlName="diplome">
+        </mat-form-field>
+      </ng-container>
+      <ng-container *ngSwitchCase="'Etudiant'">
+        <mat-form-field>
+          <mat-label>Classe</mat-label>
+          <input matInput placeholder="Classe" formControlName="classe">
+        </mat-form-field>
+      </ng-container>
+    </ng-container>
+
+    <mat-form-field>
+      <mat-label>Adresse</mat-label>
+      <input matInput placeholder="Adresse" formControlName="adresse">
+    </mat-form-field>
+
+  </div>
+
+
+
+</div>
+<div matDialogActions align="end">
+  <button mat-button color="accent" matDialogClose>Fermer</button>
+  <button mat-raised-button color="primary" [disabled]="personneForm.invalid" (click)="enregistrer(personneForm.value)">Enregister</button>
+</div>
+

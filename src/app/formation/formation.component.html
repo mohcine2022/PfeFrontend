@@ -1,0 +1,54 @@
+<mat-toolbar style="height: 50px !important;" color="primary" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="8px">
+  <mat-icon>playlist_add_check_circle</mat-icon>
+  Liste des formations
+  <span fxFlex></span>
+
+  <button mat-button (click)="modifierFormation()">
+    <mat-icon>add</mat-icon>
+    Ajouter formation
+  </button>
+</mat-toolbar>
+<div class="formations" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="8px">
+
+  <mat-form-field fxFlexFill>
+    <mat-icon matIconPrefix>search</mat-icon>
+    <input matInput placeholder="Rechercher formation" [formControl]="filter">
+  </mat-form-field>
+
+
+  <h1 style="margin-bottom: 32px !important;color: #3e52a0;">Liste des formations</h1>
+  <div class="grid-formations" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="8px">
+
+    <mat-card *ngFor="let formation of listeDesFormations" fxLayout="column" fxLayoutAlign="space-between">
+      <mat-card-header>
+        <mat-card-title>
+          {{formation.titre}}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <span>Début: </span>
+          <span style="font-weight: bold;">{{formation.dateDebut | date: 'dd/MM/yyyy'}}</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <span>Fin: </span>
+          <span style="font-weight: bold;">{{formation.dateFin | date: 'dd/MM/yyyy'}}</span>
+        </div>
+
+        <p style="margin-top: 12px;">{{formation.descriptions}}</p>
+        <div style="padding-top: 20px;color: green;font-weight: bold;">Frais: {{calculerFrais(formation)}} DH</div>
+        <p style="margin-top: 12px; font-weight: bold;">{{formation.placesDisponibles}} places disponibles</p>
+
+
+
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-icon-button color="accent" matTooltip="Supprimer" (click)="supprimerFormation(formation)"><mat-icon>delete</mat-icon></button>
+        <button mat-icon-button color="primary" matTooltip="Modifier" (click)="modifierFormation(formation)"><mat-icon>edit</mat-icon></button>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
+
+</div>

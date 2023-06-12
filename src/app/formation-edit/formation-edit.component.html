@@ -1,0 +1,61 @@
+<div matDialogTitle>
+  Formation
+</div>
+<div matDialogContent [formGroup]="formationForm">
+
+
+  <div fxLayout="column" fxLayoutGap="6px">
+    <mat-form-field required>
+      <mat-label>Titre</mat-label>
+      <input matInput placeholder="Titre" formControlName="titre">
+    </mat-form-field>
+
+    <mat-form-field required>
+      <mat-label>Description</mat-label>
+      <input matInput placeholder="Description" formControlName="descriptions">
+    </mat-form-field>
+
+    <mat-form-field required>
+      <mat-label>Places disponibles</mat-label>
+      <input matInput placeholder="Places disponibles" formControlName="placesDisponibles" type="number">
+    </mat-form-field>
+
+    <div fxLayoutAlign="space-between center" fxLayout="row" fxLayoutGap="4px">
+
+
+
+    <mat-form-field>
+      <mat-label>Date Début</mat-label>
+      <input matInput [matDatepicker]="picker1" formControlName="dateDebut">
+      <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Date Fin</mat-label>
+      <input matInput [matDatepicker]="picker2" formControlName="dateFin">
+      <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    </div>
+
+
+    <mat-form-field>
+      <mat-label>Liste des Cours</mat-label>
+      <mat-select multiple placeholder="Liste des cours" [compareWith]="compareCourses" [(ngModel)]="selectedCourses" [ngModelOptions]="{standalone: true}">
+        <mat-option *ngFor="let cours of courses" [value]="cours">
+          {{cours.titre}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+
+</div>
+<div matDialogActions align="end">
+  <button mat-button color="accent" matDialogClose>Fermer</button>
+  <button mat-raised-button color="primary" [disabled]="formationForm.invalid" (click)="enregistrer(formationForm.value)">Enregister</button>
+</div>
+

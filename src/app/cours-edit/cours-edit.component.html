@@ -1,0 +1,42 @@
+<div matDialogTitle>
+  Cours
+</div>
+<div matDialogContent [formGroup]="coursForm">
+
+
+  <div fxLayout="column" fxLayoutGap="6px">
+
+      <mat-form-field required>
+        <mat-label>Titre</mat-label>
+        <input matInput placeholder="Titre" formControlName="titre">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput placeholder="Description" formControlName="description">
+      </mat-form-field>
+
+
+      <mat-form-field required>
+        <mat-label>Coût</mat-label>
+        <span matTextSuffix>DH</span>
+        <input matInput placeholder="Coût" formControlName="cout">
+      </mat-form-field>
+
+      <mat-form-field formGroupName="enseignant">
+        <mat-label>Enseignant</mat-label>
+        <mat-select formControlName="id" required>
+          <mat-option *ngFor="let enseignant of enseignants" [value]="enseignant.id">{{enseignant.nom}} {{enseignant.prenom}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+  </div>
+
+
+
+</div>
+<div matDialogActions align="end">
+  <button mat-button color="accent" matDialogClose>Fermer</button>
+  <button mat-raised-button color="primary" [disabled]="coursForm.invalid" (click)="enregistrer(coursForm.value)">Enregister</button>
+</div>
+

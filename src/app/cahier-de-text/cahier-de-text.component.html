@@ -1,0 +1,46 @@
+<mat-toolbar style="height: 50px !important;" color="primary" fxLayout="row" fxLayoutAlign="space-between center"
+             fxLayoutGap="8px">
+  <mat-icon>menu_book</mat-icon>
+  Cahier de texte interactif
+  <span fxFlex></span>
+</mat-toolbar>
+<div style="padding: 8px;overflow: auto" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="8px">
+
+  <mat-form-field fxFlexFill>
+    <mat-icon matIconPrefix>search</mat-icon>
+    <input matInput placeholder="Rechercher..." [formControl]="filter">
+  </mat-form-field>
+
+  <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="8px" style="padding-inline: 42px;">
+
+    <mat-card style="margin-bottom: 12px" *ngFor="let cdt of listeDesCahiersDeTexte" fxFlexFill>
+      <mat-card-header>
+        <mat-card-title>
+          {{cdt.titre}}
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{cdt.dateCreation | date: 'dd/MM/yyyy'}}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>{{cdt.description}}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <mat-chip-listbox>
+          <mat-chip-option selectable="false" [style.background-color]="chipColor(cdt.typeDeTexte)">{{getType(cdt.typeDeTexte)}}</mat-chip-option>
+        </mat-chip-listbox>
+        <span fxFlex></span>
+        <button mat-button color="primary" (click)="modifierCahierDeTextInteractif(cdt)"><mat-icon>edit</mat-icon>Modifier</button>
+      </mat-card-actions>
+    </mat-card>
+
+
+  </div>
+
+</div>
+
+<button mat-fab (click)="modifierCahierDeTextInteractif()" style="position:absolute;bottom: 46px; right: 46px">
+  <mat-icon>add</mat-icon>
+</button>

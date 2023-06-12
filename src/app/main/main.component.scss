@@ -1,0 +1,26 @@
+:host {
+
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 16px;
+    color: #3e52a0;
+  }
+
+  mat-drawer {
+    padding: 8px 8px 12px;
+  }
+
+  mat-nav-list {
+    width: 100%;
+  }
+
+  mat-drawer-content {
+    background: #ECEFF1;
+    padding: 6px;
+
+    .mat-mdc-card {
+      height: calc(100vh - 12px);
+    }
+  }
+}
